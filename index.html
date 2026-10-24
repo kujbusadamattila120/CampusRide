@@ -1,154 +1,24 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusRide - Közösségi Ingyenes és Olcsó Ingaút</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Ride – Közös ingázás egyetemre és munkába</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo-group">
-                <a href="#" class="logo-link">
-                    <img src="logo.png" alt="CampusRide Logo" class="brand-logo">
-                </a>
-                <div class="live-badge">
-                    <span class="pulse-dot"></span> Élő Campus Hálózat
-                </div>
-            </div>
-            <nav class="nav-links">
-                <a href="#search">Járatkereső</a>
-                <a href="#jaratok">Elérhető Járatok</a>
-                <a href="#hirdetes">Járat Indítása</a>
-            </nav>
-            <button class="btn btn-primary" onclick="location.href='#hirdetes'">
-                <i class="fa-solid fa-plus"></i> Új Járat
-            </button>
-        </div>
-    </header>
-
-    <main class="main-container">
-        <section class="search-hero" id="search">
-            <div class="search-label">MIKOR?</div>
-            <div class="search-bar-wrapper">
-                <div class="date-input-group">
-                    <i class="fa-regular fa-calendar"></i>
-                    <input type="text" placeholder="éééé. hh. nn." value="2026. 11. 02.">
-                </div>
-                <button class="btn btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i> Keresés
-                </button>
-            </div>
-        </section>
-
-        <div class="stats-banner">
-            <div class="stat-card">
-                <div class="stat-icon blue"><i class="fa-solid fa-route"></i></div>
-                <div class="stat-info">
-                    <h2>3</h2>
-                    <p>Aktív járat a hálózatban</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon green"><i class="fa-solid fa-leaf"></i></div>
-                <div class="stat-info">
-                    <h2>142 kg</h2>
-                    <p>Megspórolt CO₂ kibocsátás</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon orange"><i class="fa-solid fa-wallet"></i></div>
-                <div class="stat-info">
-                    <h2>48 500 Ft</h2>
-                    <p>Megtakarított üzemanyagköltség</p>
-                </div>
-            </div>
-        </div>
-
-        <section class="rides-section" id="jaratok">
-            <div class="section-title">
-                <h2>Elérhető Járatok</h2>
-                <p>Csatlakozz a számodra legmegfelelőbb útvonalhoz</p>
-            </div>
-
-            <div class="rides-grid">
-                <div class="ride-card">
-                    <div class="ride-card-header">
-                        <div class="driver-info">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sofőr" class="driver-avatar">
-                            <div>
-                                <h4>Kovács Péter</h4>
-                                <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
-                            </div>
-                        </div>
-                        <div class="price-badge">400 Ft / fő</div>
-                    </div>
-                    <div class="route-details">
-                        <div class="route-point"><i class="fa-solid fa-location-dot" style="color: #2563eb;"></i> Debrecen, Tócóskert</div>
-                        <div class="route-point"><i class="fa-solid fa-location-arrow" style="color: #10b981;"></i> Mechwart Technikum</div>
-                    </div>
-                    <div class="ride-card-footer">
-                        <div class="ride-meta">
-                            <span><i class="fa-regular fa-clock"></i> Indulás: <strong>07:15</strong></span>
-                            <span><i class="fa-solid fa-user-group"></i> Szabad helyek: <strong>3 fő</strong></span>
-                        </div>
-                        <button class="btn btn-primary btn-sm"><i class="fa-solid fa-user-plus"></i> Csatlakozom</button>
-                    </div>
-                </div>
-
-                <div class="ride-card">
-                    <div class="ride-card-header">
-                        <div class="driver-info">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Sofőr" class="driver-avatar">
-                            <div>
-                                <h4>Nagy Anna</h4>
-                                <span class="rating"><i class="fa-solid fa-star"></i> 5.0</span>
-                            </div>
-                        </div>
-                        <div class="price-badge">300 Ft / fő</div>
-                    </div>
-                    <div class="route-details">
-                        <div class="route-point"><i class="fa-solid fa-location-dot" style="color: #2563eb;"></i> Debrecen, Nagyerdő</div>
-                        <div class="route-point"><i class="fa-solid fa-location-arrow" style="color: #10b981;"></i> Debreceni Egyetem IK</div>
-                    </div>
-                    <div class="ride-card-footer">
-                        <div class="ride-meta">
-                            <span><i class="fa-regular fa-clock"></i> Indulás: <strong>07:40</strong></span>
-                            <span><i class="fa-solid fa-user-group"></i> Szabad helyek: <strong>2 fő</strong></span>
-                        </div>
-                        <button class="btn btn-primary btn-sm"><i class="fa-solid fa-user-plus"></i> Csatlakozom</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="publish-section" id="hirdetes">
-            <div class="publish-box">
-                <h2>Új Járat Indítása</h2>
-                <form>
-                    <div class="form-group">
-                        <label>Sofőr neve:</label>
-                        <input type="text" placeholder="Pl. Teszt Elek" value="Kovács Péter">
-                    </div>
-                    <div class="form-group">
-                        <label>Honnan:</label>
-                        <input type="text" placeholder="Pl. Debrecen, Tócóskert" value="Debrecen, Egyetem sugárút">
-                    </div>
-                    <div class="form-group">
-                        <label>Hová:</label>
-                        <input type="text" placeholder="Pl. Mechwart / Campus" value="Mechwart Technikum">
-                    </div>
-                    <div class="form-group">
-                        <label>Szabad helyek száma:</label>
-                        <input type="number" value="3">
-                    </div>
-                    <button type="button" class="btn btn-primary">Járat Meghirdetése</button>
-                </form>
-            </div>
-        </section>
-    </main>
+<!--@header-->
+  <main>
+<!--@hero-->
+<!--@search-->
+<!--@stats-->
+<!--@rides-->
+<!--@create-->
+  </main>
+<!--@footer-->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="ride.js"></script>
 </body>
 </html>
