@@ -31,7 +31,32 @@
         <p>Oszd meg az autódat diák- és munkatársaddal! Csökkentsd a költségeidet, a dugót és a CO₂-kibocsátást.</p>
       </div>
     </section>
-<!--@search-->
+    <section class="container" id="search">
+      <form class="card search-card" id="search-form">
+        <div class="field">
+          <label for="s-from">Honnan?</label>
+          <div class="input-icon">
+            <i data-lucide="map-pin"></i>
+            <input id="s-from" type="text" placeholder="Pl. Debrecen, Tócóskert">
+          </div>
+        </div>
+        <div class="field">
+          <label for="s-to">Hová?</label>
+          <div class="input-icon">
+            <i data-lucide="navigation"></i>
+            <input id="s-to" type="text" placeholder="Pl. Egyetem / Mechwart">
+          </div>
+        </div>
+        <div class="field">
+          <label for="s-date">Mikor?</label>
+          <div class="input-icon">
+            <i data-lucide="calendar"></i>
+            <input id="s-date" type="date">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block search-btn"><i data-lucide="search"></i>Keresés</button>
+      </form>
+    </section>
 <!--@stats-->
 <!--@rides-->
 <!--@create-->
