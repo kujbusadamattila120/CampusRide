@@ -66,3 +66,23 @@ svg.lucide, [data-lucide] { width: 18px; height: 18px; flex-shrink: 0; }
 .hero { background: linear-gradient(180deg, var(--primary-soft), var(--bg)); padding: 72px 0 40px; text-align: center; }
 .hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; }
 .hero p { max-width: 560px; margin: 20px auto 0; font-size: 18px; color: var(--muted); }
+
+/* Kartyak es mezok */
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(226, 232, 240, 0.6); }
+
+.field label {
+  display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted);
+}
+.field input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg); font: inherit; font-size: 14px; color: var(--text); outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); background: #fff; }
+.input-icon { position: relative; }
+.input-icon svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+.input-icon input { padding-left: 38px; }
+
+.search-card { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; padding: 24px; margin-top: 8px; }
+.search-btn { align-self: end; }
