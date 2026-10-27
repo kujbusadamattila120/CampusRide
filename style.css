@@ -97,3 +97,33 @@ svg.lucide, [data-lucide] { width: 18px; height: 18px; flex-shrink: 0; }
 .stat-icon.indigo { background: var(--primary-soft); color: var(--primary); }
 .stat-icon.green { background: var(--green-soft); color: var(--green); }
 .stat-icon.amber { background: var(--amber-soft); color: var(--amber); }
+
+/* Jaratok */
+.rides-section { padding-top: 72px; }
+.rides-section h2, .create-section h2 { font-size: 26px; font-weight: 800; }
+.section-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.rides-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.empty { margin-top: 12px; color: var(--muted); }
+
+.ride-card { padding: 20px; }
+.ride-top { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background: var(--primary-soft); }
+.driver strong { display: block; font-size: 15px; line-height: 1.2; }
+.rating { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--amber); }
+.rating svg { width: 13px; height: 13px; fill: #f59e0b; color: #f59e0b; }
+.price-pill {
+  margin-left: auto; padding: 6px 12px; border-radius: 999px; background: var(--primary-soft);
+  color: var(--primary); font-size: 12px; white-space: nowrap;
+}
+.price-pill b { font-size: 14px; }
+
+.route { margin: 18px 0; display: grid; gap: 10px; font-size: 14px; font-weight: 500; }
+.route div { display: flex; align-items: center; gap: 10px; }
+.route .pin { color: var(--primary); }
+.route .nav-ic { color: var(--green); }
+
+.ride-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--border); }
+.meta { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+.meta span { display: flex; align-items: center; gap: 6px; }
+.meta svg { width: 14px; height: 14px; }
+.meta b { color: var(--text); }
