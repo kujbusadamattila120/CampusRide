@@ -77,7 +77,48 @@
       <div class="rides-grid" id="rides-grid"></div>
       <p class="empty" id="empty-state" hidden>Nincs a keresésnek megfelelő járat.</p>
     </section>
-<!--@create-->
+    <section class="container create-section" id="create">
+      <form class="card create-card" id="create-form" novalidate>
+        <div class="card-head">
+          <span class="head-icon"><i data-lucide="plus-circle"></i></span>
+          <div>
+            <h2>Járat Indítása</h2>
+            <p>Oszd meg a szabad helyeidet más ingázókkal</p>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field span-3">
+            <label for="c-name">Neved (sofőr)</label>
+            <input id="c-name" type="text" placeholder="Pl. Kovács Péter">
+          </div>
+          <div class="field span-3">
+            <label for="c-phone">Kapcsolat / telefon</label>
+            <input id="c-phone" type="tel" placeholder="+36 30 123 4567">
+          </div>
+          <div class="field span-3">
+            <label for="c-from">Honnan (indulás)</label>
+            <input id="c-from" type="text" placeholder="Pl. Debrecen, Tócóskert">
+          </div>
+          <div class="field span-3">
+            <label for="c-to">Hová (érkezés)</label>
+            <input id="c-to" type="text" placeholder="Pl. Egyetem / Mechwart">
+          </div>
+          <div class="field span-2">
+            <label for="c-time">Indulási idő</label>
+            <input id="c-time" type="time">
+          </div>
+          <div class="field span-2">
+            <label for="c-seats">Szabad helyek</label>
+            <input id="c-seats" type="number" min="1" max="6" value="3">
+          </div>
+          <div class="field span-2">
+            <label for="c-price">Ár / fő (Ft)</label>
+            <input id="c-price" type="number" min="0" step="50" value="500">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i data-lucide="check"></i>Járat Meghirdetése</button>
+      </form>
+    </section>
   </main>
 <!--@footer-->
   <script src="https://unpkg.com/lucide@latest"></script>
