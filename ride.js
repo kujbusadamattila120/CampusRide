@@ -70,3 +70,22 @@ function renderRides() {
 }
 
 renderRides();
+
+function notify(message) {
+  alert(message);
+}
+
+grid.addEventListener('click', (e) => {
+  const btn = e.target.closest('.join-btn');
+  if (!btn) return;
+
+  const id = Number(btn.closest('.ride-card').dataset.id);
+  const ride = allRides.find(r => r.id === id);
+  if (!ride || ride.seats === 0) return;
+
+  ride.seats -= 1;
+  joinedCount += 1;
+  // @save
+  renderRides();
+  notify(`Csatlakoztál ${ride.name} járatához!`);
+});
