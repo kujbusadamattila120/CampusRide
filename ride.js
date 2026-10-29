@@ -109,7 +109,11 @@ createForm.addEventListener('submit', (e) => {
     price: Number(value('c-price')),
   };
 
-  /* validáció helye */
+  const error = validateRide(data);
+  if (error) {
+    notify(error, 'error');
+    return;
+  }
 
   allRides.unshift({
     id: Date.now(),
@@ -124,3 +128,14 @@ createForm.addEventListener('submit', (e) => {
   notify('Járat sikeresen meghirdetve!', 'success');
   document.getElementById('rides').scrollIntoView({ behavior: 'smooth' });
 });
+
+function validateRide(d) {
+  if (d.name.length < 2) return 'Add meg a nevedet!';
+  if (!/^\+?[0-9\s]{9,15}$/.test(d.phone)) return 'Érvénytelen telefonszám!';
+  if (!d.from || !d.to) return 'Add meg az indulási és az érkezési helyet!';
+  if (d.from.toLowerCase() === d.to.toLowerCase()) return 'Az indulás és az érkezés nem lehet ugyanaz!';
+  if (!d.time) return 'Add meg az indulási időt!';
+  if (!(d.seats >= 1 && d.seats <= 6)) return 'A szabad helyek száma 1 és 6 között lehet!';
+  if (!(d.price >= 0 && d.price <= 5000)) return 'Az ár 0 és 5000 Ft között lehet!';
+  return null;
+}
