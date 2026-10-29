@@ -127,3 +127,15 @@ svg.lucide, [data-lucide] { width: 18px; height: 18px; flex-shrink: 0; }
 .meta span { display: flex; align-items: center; gap: 6px; }
 .meta svg { width: 14px; height: 14px; }
 .meta b { color: var(--text); }
+
+/* Jarat inditasa */
+.create-section { padding: 72px 0 80px; }
+.create-card { max-width: 720px; margin: 0 auto; padding: 32px; }
+.card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.card-head h2 { font-size: 22px; line-height: 1.2; }
+.card-head p { font-size: 14px; color: var(--muted); }
+.head-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; }
+.head-icon svg { width: 24px; height: 24px; }
+.form-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 20px; }
+.span-3 { grid-column: span 3; }
+.span-2 { grid-column: span 2; }
