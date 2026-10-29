@@ -89,3 +89,38 @@ grid.addEventListener('click', (e) => {
   renderRides();
   notify(`Csatlakoztál ${ride.name} járatához!`);
 });
+
+const createForm = document.getElementById('create-form');
+
+function value(id) {
+  return document.getElementById(id).value.trim();
+}
+
+createForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const data = {
+    name: value('c-name'),
+    phone: value('c-phone'),
+    from: value('c-from'),
+    to: value('c-to'),
+    time: value('c-time'),
+    seats: Number(value('c-seats')),
+    price: Number(value('c-price')),
+  };
+
+  /* validáció helye */
+
+  allRides.unshift({
+    id: Date.now(),
+    rating: 5.0,
+    avatar: `https://i.pravatar.cc/80?u=${encodeURIComponent(data.name)}`,
+    ...data,
+  });
+  // @save
+  // @reset-filters
+  renderRides();
+  createForm.reset();
+  notify('Járat sikeresen meghirdetve!', 'success');
+  document.getElementById('rides').scrollIntoView({ behavior: 'smooth' });
+});
