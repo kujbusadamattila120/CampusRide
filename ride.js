@@ -65,7 +65,7 @@ function renderRides() {
   const list = visibleRides();
   grid.innerHTML = list.map(rideCard).join('');
   emptyState.hidden = list.length > 0;
-  // @after-render
+  updateStats();
   refreshIcons();
 }
 
@@ -156,3 +156,13 @@ searchForm.addEventListener('submit', (e) => {
   document.getElementById('rides').scrollIntoView({ behavior: 'smooth' });
   if (visibleRides().length === 0) notify('Nincs találat erre a keresésre.');
 });
+
+function updateStats() {
+  const active = allRides.filter(r => r.seats > 0).length;
+  const co2 = Math.round(142 + joinedCount * 3.2);
+  const money = 48500 + joinedCount * 1200;
+
+  document.getElementById('stat-rides').textContent = active;
+  document.getElementById('stat-co2').textContent = `${co2} kg`;
+  document.getElementById('stat-money').textContent = `${money.toLocaleString('hu-HU')} Ft`;
+}
