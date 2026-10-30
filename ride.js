@@ -122,7 +122,9 @@ createForm.addEventListener('submit', (e) => {
     ...data,
   });
   // @save
-  // @reset-filters
+  filters.from = '';
+  filters.to = '';
+  document.getElementById('search-form').reset();
   renderRides();
   createForm.reset();
   notify('Járat sikeresen meghirdetve!', 'success');
@@ -139,3 +141,18 @@ function validateRide(d) {
   if (!(d.price >= 0 && d.price <= 5000)) return 'Az ár 0 és 5000 Ft között lehet!';
   return null;
 }
+
+const searchForm = document.getElementById('search-form');
+const dateInput = document.getElementById('s-date');
+
+// Mult datumot nem lehet valasztani
+dateInput.min = new Date().toISOString().split('T')[0];
+
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  filters.from = value('s-from').toLowerCase();
+  filters.to = value('s-to').toLowerCase();
+  renderRides();
+  document.getElementById('rides').scrollIntoView({ behavior: 'smooth' });
+  if (visibleRides().length === 0) notify('Nincs találat erre a keresésre.');
+});
