@@ -139,3 +139,11 @@ svg.lucide, [data-lucide] { width: 18px; height: 18px; flex-shrink: 0; }
 .form-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 20px; }
 .span-3 { grid-column: span 3; }
 .span-2 { grid-column: span 2; }
+
+/* Ertesitesek */
+#toast-box { position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+.toast { background: var(--text); color: #fff; padding: 12px 18px; border-radius: 12px; font-size: 14px; box-shadow: var(--shadow); animation: slide-in 0.25s ease; }
+.toast-success { background: var(--green); }
+.toast-error { background: #dc2626; }
+.toast.hide { opacity: 0; transform: translateY(8px); transition: all 0.3s; }
+@keyframes slide-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

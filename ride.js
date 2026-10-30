@@ -71,8 +71,22 @@ function renderRides() {
 
 renderRides();
 
-function notify(message) {
-  alert(message);
+function notify(message, type = 'info') {
+  let box = document.getElementById('toast-box');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'toast-box';
+    document.body.appendChild(box);
+  }
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  box.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add('hide');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }
 
 grid.addEventListener('click', (e) => {
