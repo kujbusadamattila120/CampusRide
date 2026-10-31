@@ -10,7 +10,7 @@ const defaultRides = [
     from: 'Ebes', to: 'Debrecen Belváros', time: '08:50', seats: 1, price: 600, phone: '+36 70 987 6543' },
 ];
 
-let allRides = [...defaultRides];
+let allRides = loadRides();
 let joinedCount = 0;
 const filters = { from: '', to: '' };
 
@@ -99,7 +99,7 @@ grid.addEventListener('click', (e) => {
 
   ride.seats -= 1;
   joinedCount += 1;
-  // @save
+  saveRides();
   renderRides();
   notify(`Csatlakoztál ${ride.name} járatához!`);
 });
@@ -135,7 +135,7 @@ createForm.addEventListener('submit', (e) => {
     avatar: `https://i.pravatar.cc/80?u=${encodeURIComponent(data.name)}`,
     ...data,
   });
-  // @save
+  saveRides();
   filters.from = '';
   filters.to = '';
   document.getElementById('search-form').reset();
@@ -179,4 +179,22 @@ function updateStats() {
   document.getElementById('stat-rides').textContent = active;
   document.getElementById('stat-co2').textContent = `${co2} kg`;
   document.getElementById('stat-money').textContent = `${money.toLocaleString('hu-HU')} Ft`;
+}
+
+function loadRides() {
+  try {
+    const raw = localStorage.getItem('campusride.rides');
+    if (raw) return JSON.parse(raw);
+  } catch (err) {
+    console.warn('A mentett járatok nem olvashatók be', err);
+  }
+  return defaultRides.map(r => ({ ...r }));
+}
+
+function saveRides() {
+  try {
+    localStorage.setItem('campusride.rides', JSON.stringify(allRides));
+  } catch (err) {
+    console.warn('A járatok mentése sikertelen', err);
+  }
 }
