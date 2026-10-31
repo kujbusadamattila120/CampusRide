@@ -147,3 +147,19 @@ svg.lucide, [data-lucide] { width: 18px; height: 18px; flex-shrink: 0; }
 .toast-error { background: #dc2626; }
 .toast.hide { opacity: 0; transform: translateY(8px); transition: all 0.3s; }
 @keyframes slide-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Reszponziv */
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .stats { grid-template-columns: 1fr; }
+  .rides-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; }
+}
+
+@media (max-width: 640px) {
+  .search-card { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .span-3, .form-grid .span-2 { grid-column: auto; }
+  .live-badge { display: none; }
+  .create-card { padding: 22px; }
+}
