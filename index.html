@@ -1,113 +1,137 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campus Ride</title>
-  <link rel="icon" href="logo.png">
+  <title>Campus Ride – Közös ingázás egyetemre és munkába</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <!-- Fejléc -->
-  <header>
+<body>
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand">
-        <span class="logo-circle"><img src="logo.png" alt="Campus Ride logó"></span>
-        <span class="brand-name">Campus<b>Ride</b></span>
-        <span class="badge">● Élő Campus Hálózat</span>
+      <a href="#hero" class="brand">
+        <span class="brand-icon"><i data-lucide="car"></i></span>
+        <span class="brand-name">Campus<span>Ride</span></span>
+        <span class="live-badge"><span class="dot"></span>Élő Campus Hálózat</span>
       </a>
-      <nav>
-        <a href="#kereso">Járatkereső</a>
-        <a href="#jaratok">Elérhető Járatok</a>
-        <a href="#uj">Járat Indítása</a>
+      <nav class="nav">
+        <a href="#search">Járatkereső</a>
+        <a href="#rides">Elérhető Járatok</a>
+        <a href="#create">Járat Indítása</a>
       </nav>
-      <a href="#uj" class="button"><i data-lucide="plus-circle"></i>Új Járat</a>
+      <a href="#create" class="btn btn-primary"><i data-lucide="plus-circle"></i>Új Járat</a>
     </div>
   </header>
-
-  <main class="container">
-
-    <!-- Cím -->
-    <section class="hero">
-      <h1>Közös ingázás egyetemre és munkába</h1>
-      <p>Oszd meg az autódat diák- és munkatársaddal! Csökkentsd a költségeidet, a dugót és a CO₂-kibocsátást.</p>
-    </section>
-
-    <!-- Kereső -->
-    <section id="kereso" class="card search">
-      <div>
-        <label>Honnan?</label>
-        <div class="with-icon"><i data-lucide="map-pin"></i><input id="search-from" type="text" placeholder="Pl. Debrecen, Tócóskert"></div>
-      </div>
-      <div>
-        <label>Hová?</label>
-        <div class="with-icon"><i data-lucide="navigation"></i><input id="search-to" type="text" placeholder="Pl. Egyetem / Mechwart"></div>
-      </div>
-      <div>
-        <label>Mikor?</label>
-        <div class="with-icon"><i data-lucide="calendar"></i><input type="date"></div>
-      </div>
-      <button class="button" onclick="searchRides()"><i data-lucide="search"></i>Keresés</button>
-    </section>
-
-    <!-- Statisztika -->
-    <section class="stats">
-      <div class="card stat">
-        <span class="icon-box main"><i data-lucide="route"></i></span>
-        <div><b id="stat-rides">3</b><small>Aktív járat a hálózatban</small></div>
-      </div>
-      <div class="card stat">
-        <span class="icon-box green"><i data-lucide="leaf"></i></span>
-        <div><b><span id="stat-co2">142</span> kg</b><small>Megspórolt CO₂ kibocsátás</small></div>
-      </div>
-      <div class="card stat">
-        <span class="icon-box dark"><i data-lucide="wallet"></i></span>
-        <div><b><span id="stat-money">48500</span> Ft</b><small>Megtakarított üzemanyagköltség</small></div>
+  <main>
+    <section class="hero" id="hero">
+      <div class="container">
+        <h1>Közös ingázás egyetemre és munkába</h1>
+        <p>Oszd meg az autódat diák- és munkatársaddal! Csökkentsd a költségeidet, a dugót és a CO₂-kibocsátást.</p>
       </div>
     </section>
-
-    <!-- Járatok -->
-    <section id="jaratok">
-      <h2>Elérhető Járatok</h2>
-      <p class="subtitle">Csatlakozz a számodra legmegfelelőbb útvonalhoz</p>
-      <div id="rides-list" class="rides"></div>
-    </section>
-
-    <!-- Új járat -->
-    <section id="uj" class="card form">
-      <div class="form-head">
-        <span class="icon-box main"><i data-lucide="plus-circle"></i></span>
-        <div>
-          <h2>Járat Indítása</h2>
-          <p class="subtitle">Oszd meg a szabad helyeidet más ingázókkal</p>
+    <section class="container" id="search">
+      <form class="card search-card" id="search-form">
+        <div class="field">
+          <label for="s-from">Honnan?</label>
+          <div class="input-icon">
+            <i data-lucide="map-pin"></i>
+            <input id="s-from" type="text" placeholder="Pl. Debrecen, Tócóskert">
+          </div>
         </div>
-      </div>
-
-      <form onsubmit="addRide(event)">
-        <div class="row row2">
-          <div><label>Neved (sofőr)</label><input id="new-name" type="text" placeholder="Pl. Kovács Péter" required></div>
-          <div><label>Kapcsolat / telefon</label><input id="new-phone" type="tel" placeholder="+36 30 123 4567" required></div>
+        <div class="field">
+          <label for="s-to">Hová?</label>
+          <div class="input-icon">
+            <i data-lucide="navigation"></i>
+            <input id="s-to" type="text" placeholder="Pl. Egyetem / Mechwart">
+          </div>
         </div>
-        <div class="row row2">
-          <div><label>Honnan (indulás)</label><input id="new-from" type="text" placeholder="Pl. Debrecen, Tócóskert" required></div>
-          <div><label>Hová (érkezés)</label><input id="new-to" type="text" placeholder="Pl. Egyetem / Mechwart" required></div>
+        <div class="field">
+          <label for="s-date">Mikor?</label>
+          <div class="input-icon">
+            <i data-lucide="calendar"></i>
+            <input id="s-date" type="date">
+          </div>
         </div>
-        <div class="row row3">
-          <div><label>Indulási idő</label><input id="new-time" type="time" required></div>
-          <div><label>Szabad helyek</label><input id="new-seats" type="number" min="1" max="6" value="3"></div>
-          <div><label>Ár / fő (Ft)</label><input id="new-price" type="number" min="0" value="500"></div>
-        </div>
-        <button type="submit" class="button wide"><i data-lucide="check"></i>Járat Meghirdetése</button>
+        <button type="submit" class="btn btn-primary btn-block search-btn"><i data-lucide="search"></i>Keresés</button>
       </form>
     </section>
-
+    <section class="container stats" id="stats">
+      <div class="card stat">
+        <div class="stat-icon indigo"><i data-lucide="route"></i></div>
+        <div><strong id="stat-rides">3</strong><span>Aktív járat a hálózatban</span></div>
+      </div>
+      <div class="card stat">
+        <div class="stat-icon green"><i data-lucide="leaf"></i></div>
+        <div><strong id="stat-co2">142 kg</strong><span>Megspórolt CO₂ kibocsátás</span></div>
+      </div>
+      <div class="card stat">
+        <div class="stat-icon amber"><i data-lucide="wallet"></i></div>
+        <div><strong id="stat-money">48 500 Ft</strong><span>Megtakarított üzemanyagköltség</span></div>
+      </div>
+    </section>
+    <section class="container rides-section" id="rides">
+      <h2>Elérhető Járatok</h2>
+      <p class="section-sub">Csatlakozz a számodra legmegfelelőbb útvonalhoz</p>
+      <div class="rides-grid" id="rides-grid"></div>
+      <p class="empty" id="empty-state" hidden>Nincs a keresésnek megfelelő járat.</p>
+    </section>
+    <section class="container create-section" id="create">
+      <form class="card create-card" id="create-form" novalidate>
+        <div class="card-head">
+          <span class="head-icon"><i data-lucide="plus-circle"></i></span>
+          <div>
+            <h2>Járat Indítása</h2>
+            <p>Oszd meg a szabad helyeidet más ingázókkal</p>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field span-3">
+            <label for="c-name">Neved (sofőr)</label>
+            <input id="c-name" type="text" placeholder="Pl. Kovács Péter">
+          </div>
+          <div class="field span-3">
+            <label for="c-phone">Kapcsolat / telefon</label>
+            <input id="c-phone" type="tel" placeholder="+36 30 123 4567">
+          </div>
+          <div class="field span-3">
+            <label for="c-from">Honnan (indulás)</label>
+            <input id="c-from" type="text" placeholder="Pl. Debrecen, Tócóskert">
+          </div>
+          <div class="field span-3">
+            <label for="c-to">Hová (érkezés)</label>
+            <input id="c-to" type="text" placeholder="Pl. Egyetem / Mechwart">
+          </div>
+          <!-- index.html részlet a create-section űrlapján belül -->
+          <div class="field span-2">
+            <label for="c-date">Indulási dátum</label>
+            <input id="c-date" type="date">
+          </div>
+          <div class="field span-2">
+            <label for="c-time">Indulási idő</label>
+            <input id="c-time" type="time">
+          </div>
+          <div class="field span-2">
+            <label for="c-seats">Szabad helyek</label>
+            <input id="c-seats" type="number" min="1" max="6" value="3">
+          </div>
+          <div class="field span-2">
+            <label for="c-price">Ár / fő (Ft)</label>
+            <input id="c-price" type="number" min="0" step="50" value="500">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i data-lucide="check"></i>Járat Meghirdetése</button>
+      </form>
+    </section>
   </main>
-
-  <footer>© 2026 Campus Ride Team — Agilis Fejlesztési Projekt</footer>
-
-  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+  <footer class="site-footer">
+    <p>© 2026 Campus Ride Team — Agilis Fejlesztési Projekt</p>
+  </footer>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="ride.js"></script>
 </body>
+
 </html>
