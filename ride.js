@@ -54,13 +54,13 @@ function showRides(rideList) {
           <p class="from"><i data-lucide="map-pin"></i>${ride.from}</p>
           <p class="to"><i data-lucide="navigation"></i>${ride.to}</p>
         </div>
-        <div class="ride-bottom">
+       <div class="ride-bottom">
           <div>
             <small><i data-lucide="clock"></i>Indulás: <b>${ride.time}</b></small>
             <small><i data-lucide="users"></i>Szabad helyek: <b>${ride.seats} fő</b></small>
           </div>
-                   <div class="actions">
-            <button class="button small delete" onclick="deleteRide(${ride.id})" title="Járat törlése"><i data-lucide="trash-2"></i></button>
+          <div class="actions">
+            <button class="button small delete" onclick="deleteRide(${ride.id})" title="Járat törlése"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
             ${button}
           </div>
         </div>
@@ -106,7 +106,17 @@ function searchRides() {
   }
   showRides(result);
 }
-
+// Jár törlése az azonosítója alapján
+function deleteRide(id) {
+  if (confirm('Biztosan törölni szeretnéd ezt a járatot?')) {
+    // Kiszűrjük a törlendő járatot a tömbből
+    allRides = allRides.filter(r => r.id !== id);
+    
+    // Frissítjük a LocalStorage-ot és az oldalt
+    saveRides();
+    showRides(allRides);
+  }
+}
 // Új járat hozzáadása az űrlapból
 function addRide(event) {
   event.preventDefault(); // ne töltse újra az oldalt

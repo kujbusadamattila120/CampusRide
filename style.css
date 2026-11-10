@@ -142,3 +142,16 @@ footer { margin-top: 70px; padding: 24px; text-align: center; font-size: 12px; c
   .search, .stats, .rides, .row2, .row3 { grid-template-columns: 1fr; }
   .form { padding: 22px; }
 }
+/* Törlés gomb stílusa */
+.button.delete {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: none;
+}
+.button.delete:hover {
+  background: #fecaca;
+}
