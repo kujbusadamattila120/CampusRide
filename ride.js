@@ -166,6 +166,22 @@ grid.addEventListener('click', (e) => {
   const delBtn = e.target.closest('.delete-btn');
   if (delBtn) {
     const id = Number(delBtn.closest('.ride-card').dataset.id);
+    
+    // Alapértelmezett járat esetén elmentjük az ID-t a töröltek közé
+    const defaultIds = defaultRides.map(d => d.id);
+    if (defaultIds.includes(id)) {
+      try {
+        const deletedRaw = localStorage.getItem('campusride.deletedDefaults');
+        const deletedIds = deletedRaw ? JSON.parse(deletedRaw) : [];
+        if (!deletedIds.includes(id)) {
+          deletedIds.push(id);
+          localStorage.setItem('campusride.deletedDefaults', JSON.stringify(deletedIds));
+        }
+      } catch (err) {
+        console.warn('Nem sikerült menteni a törölt alapértelmezett járatot', err);
+      }
+    }
+
     allRides = allRides.filter(r => r.id !== id);
     saveRides();
     renderRides();
@@ -274,6 +290,9 @@ function updateStats() {
 function loadRides() {
   let rides = defaultRides.map(r => ({ ...r }));
   try {
+    const deletedRaw = localStorage.getItem('campusride.deletedDefaults');
+    const deletedIds = deletedRaw ? JSON.parse(deletedRaw) : [];
+
     const raw = localStorage.getItem('campusride.rides');
     if (raw) {
       const saved = JSON.parse(raw);
@@ -282,10 +301,12 @@ function loadRides() {
       const savedDefaults = saved.filter(r => defaultIds.includes(r.id));
       const customRides = saved.filter(r => !defaultIds.includes(r.id));
       
-      const activeDefaults = defaultRides.map(def => {
-        const found = savedDefaults.find(s => s.id === def.id);
-        return found ? { ...def, ...found, date: found.date || def.date } : { ...def };
-      });
+      const activeDefaults = defaultRides
+        .filter(def => !deletedIds.includes(def.id))
+        .map(def => {
+          const found = savedDefaults.find(s => s.id === def.id);
+          return found ? { ...def, ...found, date: found.date || def.date } : { ...def };
+        });
       
       const fixedCustomRides = customRides.map(r => ({
         ...r,
@@ -293,6 +314,8 @@ function loadRides() {
       }));
       
       rides = [...activeDefaults, ...fixedCustomRides];
+    } else {
+      rides = defaultRides.filter(def => !deletedIds.includes(def.id));
     }
   } catch (err) {
     console.warn('A mentett járatok nem olvashatók be', err);
